@@ -70,11 +70,11 @@ namespace coremembersystem.Controllers
                         {
                             new Claim(ClaimTypes.Name, model.Email),
                             new Claim(ClaimTypes.Role, "User"),
-                            new Claim(ClaimTypes.Role, "Administrator")
                         };
-                    
+                    //權限判斷
+                    if (member.Id == 1)
+                        claims.Add(new Claim(ClaimTypes.Role, "Administrator"));
                     var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
-
 
                     var authProperties = new AuthenticationProperties
                     {
