@@ -71,7 +71,6 @@ namespace coremembersystem.Controllers
                             new Claim(ClaimTypes.Name, model.Email),
                             new Claim(ClaimTypes.Role, "User"),
                         };
-                    //權限判斷
                     if (member.Id == 1)
                         claims.Add(new Claim(ClaimTypes.Role, "Administrator"));
                     var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
@@ -119,6 +118,11 @@ namespace coremembersystem.Controllers
         public IActionResult nopermission()
         {
             return View();
+        }
+        [HttpGet]
+        public IActionResult GetData()
+        {
+            return Json("Test");
         }
     }
 }
